@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Switch, Route } from 'react-router-dom';
 import Login from '../Login';
+import Home from '../Home';
 import DefaultLayout from '../DefaultLayout';
 import GlobalStyle from '../../global-styles';
 import { useInjectReducer } from '../../utils/injectReducer';
@@ -23,7 +24,8 @@ function App() {
       </Helmet>
       <DefaultLayout>
         <Switch>
-          <Route exact path="/" component={Login} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/" component={Home} />
         </Switch>
       </DefaultLayout>
       <GlobalStyle />

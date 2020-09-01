@@ -1,4 +1,4 @@
-import { SIGNUP, SETLOADING, SETERROR } from './constants';
+import { SIGNUP, SETLOADING, SETERROR, RESETERROR } from './constants';
 
 export function doSignUp(payload) {
   return {
@@ -18,5 +18,11 @@ export function setError(payload) {
   return {
     type: SETERROR,
     payload,
+  };
+}
+
+export function setResetError() {
+  return {
+    type: RESETERROR,
   };
 }

@@ -14,18 +14,16 @@ import { useInjectReducer } from '../../utils/injectReducer';
 import { useInjectSaga } from '../../utils/injectSaga';
 import reducer from './redux-saga/reducer';
 import saga from './redux-saga/saga';
-import { selectLoginLoading, selectLoginError } from './redux-saga/selectors';
+import {
+  selectLoginLoading,
+  selectLoginErrorMessage,
+} from './redux-saga/selectors';
 import { doSignUp } from './redux-saga/actions';
 import api from '../../api';
 
 const LoginStyled = styled(CardStyled)`
   height: fit-content;
-  /* max-height: calc(50vh); */
   width: calc(70vh);
-
-  & h1 {
-    margin-bottom: 1rem;
-  }
 
   & form {
     width: 100%;
@@ -69,7 +67,7 @@ function Login(props) {
   const { dispatch, loading, error } = props;
 
   return (
-    <LoginStyled>
+    <LoginStyled footnote={error}>
       <h1>Sign up</h1>
       <Formik
         initialValues={initialValues}
@@ -186,12 +184,12 @@ function Login(props) {
 Login.propTypes = {
   dispatch: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
-  error: PropTypes.object.isRequired,
+  error: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
   loading: selectLoginLoading,
-  error: selectLoginError,
+  error: selectLoginErrorMessage,
 });
 
 function mapDispatchToProps(dispatch) {

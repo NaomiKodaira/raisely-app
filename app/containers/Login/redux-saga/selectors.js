@@ -4,6 +4,8 @@ import { initialState } from './reducer';
 const selectLoginDomain = state => (state && state.login) || initialState;
 const selectLoginLoading = state => selectLoginDomain(state).loading;
 const selectLoginError = state => selectLoginDomain(state).error;
+const selectLoginErrorMessage = state =>
+  selectLoginError(state).error?.response?.data?.errors[0]?.message;
 
 const makeSelectLeadInfo = () =>
   createSelector(
@@ -12,4 +14,9 @@ const makeSelectLeadInfo = () =>
   );
 
 export default makeSelectLeadInfo;
-export { selectLoginDomain, selectLoginLoading, selectLoginError };
+export {
+  selectLoginDomain,
+  selectLoginLoading,
+  selectLoginError,
+  selectLoginErrorMessage,
+};

@@ -2,6 +2,8 @@ import { createSelector } from 'reselect';
 import { initialState } from './reducer';
 
 const selectAppDomain = state => (state && state.app) || initialState;
+const selectAppUser = state => selectAppDomain(state).user;
+const selectAppSignUp = state => selectAppDomain(state).signUp;
 
 const makeSelectLeadInfo = () =>
   createSelector(
@@ -10,4 +12,4 @@ const makeSelectLeadInfo = () =>
   );
 
 export default makeSelectLeadInfo;
-export { selectAppDomain };
+export { selectAppDomain, selectAppUser, selectAppSignUp };
