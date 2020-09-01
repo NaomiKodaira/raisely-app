@@ -62,6 +62,8 @@ function DefaultLayout(props) {
     setSquares(s);
   }, []);
 
+  // Verify token
+
   return (
     <DefaultLayoutStyled>
       <div className="background">

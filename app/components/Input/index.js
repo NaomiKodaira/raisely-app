@@ -1,5 +1,7 @@
+/* eslint-disable prettier/prettier */
 import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const InputStyled = styled.div`
   position: relative;
@@ -115,5 +117,15 @@ function Input(props) {
     </InputStyled>
   );
 }
+
+Input.propTypes = {
+  type: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onBlur: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  error: PropTypes.string.isRequired,
+};
 
 export default Input;

@@ -7,6 +7,7 @@ import DefaultLayout from '../DefaultLayout';
 import GlobalStyle from '../../global-styles';
 import { useInjectReducer } from '../../utils/injectReducer';
 import reducer from './redux-saga/reducer';
+import PrivateRoute from '../../components/PrivateRoute';
 
 function App() {
   useInjectReducer({ key: 'app', reducer });
@@ -24,8 +25,8 @@ function App() {
       </Helmet>
       <DefaultLayout>
         <Switch>
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/" component={Home} />
+          <Route exact path="/signup" component={Login} />
+          <PrivateRoute path="/" component={Home} />
         </Switch>
       </DefaultLayout>
       <GlobalStyle />
