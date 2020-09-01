@@ -11,12 +11,15 @@ import { selectAppUser, selectAppSignUp } from '../App/redux-saga/selectors';
 const HomeStyled = styled(CardStyled)`
   height: fit-content;
   width: calc(70vh);
+  font-size: 18px;
 
   & > p {
     margin-bottom: 1rem;
   }
 
-  & > pre {
+  & > pre,
+  & > pre > span {
+    color: #707070;
     white-space: pre-wrap; /* Since CSS 2.1 */
     white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
     white-space: -pre-wrap; /* Opera 4-6 */
@@ -32,7 +35,11 @@ function Home(props) {
     <HomeStyled>
       <h1>{signUp ? 'Signed up!!' : 'Logged in!!'}</h1>
       {signUp && <p>{signUp}</p>}
-      <pre>{JSON.stringify(user, null, 2)}</pre>
+
+      <pre>
+        <span>User Data saved on Redux: </span>
+        {JSON.stringify(user, null, 2)}
+      </pre>
     </HomeStyled>
   );
 }

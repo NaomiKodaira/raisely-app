@@ -9,7 +9,7 @@ function PrivateRoute(props) {
     <Route
       {...rest}
       render={prop =>
-        readCookie('token') ? (
+        readCookie('usrtkn') ? (
           <RenderComponent {...prop} />
         ) : (
           <Redirect

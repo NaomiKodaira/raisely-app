@@ -4,6 +4,7 @@ import { SIGNUP, SETLOADING } from './constants';
 import api from '../../../api';
 import { doSaveUser, doSaveSignUp } from '../../App/redux-saga/actions';
 import { setLoading, setError, setResetError } from './actions';
+import { bakeCookie } from '../../../utils/cookieHandler';
 
 export default function* LoginSaga() {
   yield takeLatest(SIGNUP, signUp);
@@ -16,6 +17,7 @@ export function* signUp({ payload }) {
     const res = yield call(api.postSignUp, payload);
     yield put(doSaveUser({ user: res.data }));
     yield put(doSaveSignUp({ signUp: res.message }));
+    bakeCookie('usrtkn', res.token);
     yield put(setLoading({ loading: false }));
     yield put(push('/'));
   } catch (e) {
