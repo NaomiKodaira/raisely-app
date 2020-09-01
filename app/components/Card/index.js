@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const CardStyled = styled.div`
   position: absolute;
@@ -12,6 +12,6 @@ const CardStyled = styled.div`
   overflow: hidden;
   padding: 2em;
   box-sizing: border-box;
-`
+`;
 
 export default CardStyled;

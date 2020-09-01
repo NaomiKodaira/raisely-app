@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const ButtonStyled = styled.button`
   background-color: #333;
@@ -24,6 +24,6 @@ const ButtonStyled = styled.button`
     outline: none;
     border-bottom: 3px #84c3be solid;
   }
-`
+`;
 
 export default ButtonStyled;

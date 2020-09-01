@@ -1,11 +1,11 @@
 import React, { useState, useRef } from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const InputStyled = styled.div`
   position: relative;
   margin-bottom: 10px;
   height: 45px;
-  height: ${props => props.error ? props.totalHeight : '45'}px;
+  height: ${props => (props.error ? props.totalHeight : '45')}px;
   width: 100%;
   transition: height 200ms;
   box-sizing: border-box;
@@ -16,7 +16,8 @@ const InputStyled = styled.div`
     height: 45px;
     border-radius: 10px;
     border: none;
-    border-bottom: ${props => props.focused ? '2px #84c3be solid' : '0px #84c3be solid'};
+    border-bottom: ${props =>
+    props.focused ? '2px #84c3be solid' : '0px #84c3be solid'};
     overflow: hidden;
     box-sizing: border-box;
     padding: 0.5em 0.75em;
@@ -32,7 +33,7 @@ const InputStyled = styled.div`
       background-color: #222;
     }
 
-    & > label{
+    & > label {
       color: #707070;
       margin-right: 5px;
       white-space: nowrap;
@@ -77,14 +78,14 @@ const InputStyled = styled.div`
     -webkit-box-shadow: none;
     transition: background-color 5000s ease-in-out 0s;
   }
-`
+`;
 
 function Input(props) {
-  const { type, name, onChange, onBlur, value, label, error } = props
+  const { type, name, onChange, onBlur, value, label, error } = props;
 
-  const [focused, setFocused] = useState(false)
-  const err = useRef(null)
-  const input = useRef(null)
+  const [focused, setFocused] = useState(false);
+  const err = useRef(null);
+  const input = useRef(null);
 
   return (
     <InputStyled
@@ -92,17 +93,22 @@ function Input(props) {
       error={error}
       totalHeight={45 + err.current?.clientHeight - 10}
     >
-      <div className='error' ref={err}>
+      <div className="error" ref={err}>
         <p>* {error}</p>
       </div>
-      <div className='input' ref={input}>
+      <div className="input" ref={input}>
         <label>{label}</label>
         <input
           type={type}
           name={name}
           onChange={onChange}
-          onBlur={() => {setFocused(false); onBlur();}}
-          onFocus={() => {setFocused(true)}}
+          onBlur={() => {
+            setFocused(false);
+            onBlur();
+          }}
+          onFocus={() => {
+            setFocused(true);
+          }}
           value={value}
         />
       </div>
