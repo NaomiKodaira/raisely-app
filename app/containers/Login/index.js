@@ -14,7 +14,7 @@ import { useInjectReducer } from '../../utils/injectReducer';
 import { useInjectSaga } from '../../utils/injectSaga';
 import reducer from './redux-saga/reducer';
 import saga from './redux-saga/saga';
-import selectLoginDomain from './redux-saga/selectors';
+import { selectLoginLoading, selectLoginError } from './redux-saga/selectors';
 import { doSignUp } from './redux-saga/actions';
 import api from '../../api';
 
@@ -66,7 +66,7 @@ function Login(props) {
   useInjectReducer({ key: 'login', reducer });
   useInjectSaga({ key: 'login', saga });
 
-  const { dispatch, login } = props;
+  const { dispatch, loading, error } = props;
 
   return (
     <LoginStyled>
@@ -107,9 +107,8 @@ function Login(props) {
             .required('Required')
             .oneOf([Yup.ref('password'), null], "Passwords don't match"),
         })}
-        onSubmit={async (values, { setSubmitting }) => {
+        onSubmit={async values => {
           dispatch(doSignUp(values));
-          setSubmitting(false);
         }}
       >
         {({
@@ -118,7 +117,6 @@ function Login(props) {
           touched,
           handleChange,
           handleSubmit,
-          isSubmitting,
           setFieldTouched,
           /* and other goodies */
         }) => (
@@ -174,8 +172,8 @@ function Login(props) {
               error={touched.confPassword && errors.confPassword}
             />
             <div className="button-align">
-              <ButtonStyled type="submit" disabled={isSubmitting}>
-                {isSubmitting ? 'Submiting' : 'Submit'}
+              <ButtonStyled type="submit" disabled={loading}>
+                {loading ? 'Submiting' : 'Submit'}
               </ButtonStyled>
             </div>
           </form>
@@ -187,11 +185,13 @@ function Login(props) {
 
 Login.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  login: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
-  login: selectLoginDomain,
+  loading: selectLoginLoading,
+  error: selectLoginError,
 });
 
 function mapDispatchToProps(dispatch) {
