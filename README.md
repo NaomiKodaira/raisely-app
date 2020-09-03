@@ -20,5 +20,8 @@ Here's another funny story, I stated coding the site with the create-react-app t
 
 Unfortunately, changing projects meant changing git folders. Even though I could easily just change the .git and keep the other code, I wasn't 100% if I really wanted to change from create-react-app so I opted to keep the create-react-app history safe and lose the start of the history in this project. I still have the original create-react-app project though, so if you want it I can send you.
 
+## Why Github
+I do prefer other platforms, such as BitBucket and Gitlab, BUT I had entered some job applications that would not allow any link except from github links to be submited, so I'm not taking that risk.
+
 ## Issues
 I am aware that the project has some issues, they are all described in the issues tab of github, I would like submit a perfect project, but since the position will only be open until you guys find a suitable professional I want to send my submission as soon as possible, so I decided to forgo some code quality in order to be faster. After submitting I will be working on testing and responsiveness and creating a pipeline and all that fun stuff, so if you are seeing this after some time, maybe it is a way prettier code, who knows
